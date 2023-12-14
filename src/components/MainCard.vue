@@ -14,6 +14,12 @@ export default {
       const votoDimezzato = this.votoDecimale / 2;
       return Math.ceil(votoDimezzato);
     },
+    stelleVuote() {
+      if (this.dimezzaVoto() < 5) {
+        const mancanti = 5 - this.dimezzaVoto();
+        return mancanti;
+      }
+    },
   },
 };
 </script>
@@ -41,7 +47,14 @@ export default {
       <h4 v-else>Lingua: {{ lingua }}</h4>
     </div>
     <div class="voto">
-      <h4>Voto: {{ dimezzaVoto() }}</h4>
+      <h4>Voto:</h4>
+      <div class="stelle">
+        <font-awesome-icon v-for="n in dimezzaVoto()" icon="fa-solid fa-star" />
+        <font-awesome-icon
+          v-for="n in stelleVuote()"
+          icon="fa-regular fa-star"
+        />
+      </div>
     </div>
   </div>
 </template>
