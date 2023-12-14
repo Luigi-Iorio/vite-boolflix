@@ -45,4 +45,4 @@ export default {
   <AppMain />
 </template>
 
-<style></style>
+<style lang="scss"></style>
