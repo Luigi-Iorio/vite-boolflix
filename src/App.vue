@@ -2,7 +2,22 @@
 import AppHeader from "./components/AppHeader.vue";
 import AppMain from "./components/AppMain.vue";
 
+import axios from "axios";
+import { store } from "./store";
+
 export default {
+  methods: {
+    ricerca() {
+      axios
+        .get(store.tmdbApi, {
+          params: { api_key: store.apiKey, query: store.apiQuery },
+        })
+        .then((response) => {
+          store.tmdbCard = response.data;
+        });
+      store.apiQuery = "";
+    },
+  },
   components: {
     AppHeader,
     AppMain,
@@ -11,7 +26,7 @@ export default {
 </script>
 
 <template>
-  <AppHeader />
+  <AppHeader @ricerca="ricerca" />
   <AppMain />
 </template>
 
