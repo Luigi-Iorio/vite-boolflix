@@ -13,7 +13,7 @@ export default {
           params: { api_key: store.apiKey, query: store.apiQuery },
         })
         .then((response) => {
-          store.tmdbCard = response.data;
+          store.tmdbCard = response.data.results;
         });
       store.apiQuery = "";
     },
