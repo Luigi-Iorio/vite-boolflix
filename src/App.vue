@@ -10,7 +10,11 @@ export default {
     ricerca() {
       axios
         .get(store.tmdbApi, {
-          params: { api_key: store.apiKey, query: store.apiQuery },
+          params: {
+            api_key: store.apiKey,
+            query: store.apiQuery,
+            language: store.language,
+          },
         })
         .then((response) => {
           store.tmdbCard = response.data.results;
