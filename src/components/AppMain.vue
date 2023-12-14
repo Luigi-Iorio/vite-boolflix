@@ -24,6 +24,7 @@ export default {
       <li v-for="card in store.tmdbCard">
         <!-- card -->
         <MainCard
+          :copertina="card.poster_path"
           :titolo="card.title"
           :titoloOriginale="card.original_title"
           :lingua="card.original_language"
@@ -37,6 +38,7 @@ export default {
       <li v-for="cardTv in store.tmdbCardTv">
         <!-- cardTv -->
         <MainCard
+          :copertina="cardTv.poster_path"
           :titolo="cardTv.name"
           :titoloOriginale="cardTv.original_name"
           :lingua="cardTv.original_language"

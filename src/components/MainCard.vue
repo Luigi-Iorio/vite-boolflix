@@ -1,10 +1,11 @@
 <script>
 export default {
-  props: ["titolo", "titoloOriginale", "lingua", "voto"],
+  props: ["copertina", "titolo", "titoloOriginale", "lingua", "voto"],
   data() {
     return {
       itFlag: "src/assets/img/italy.png",
       ukFlag: "src/assets/img/uk.png",
+      imgBaseUrl: "https://image.tmdb.org/t/p/w342",
     };
   },
 };
@@ -12,6 +13,9 @@ export default {
 
 <template>
   <div class="card">
+    <div class="copertina">
+      <img :src="imgBaseUrl + copertina" alt="" />
+    </div>
     <div class="titolo">
       <h3>Titolo: {{ titolo }}</h3>
     </div>
