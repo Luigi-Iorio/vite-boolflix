@@ -6,7 +6,14 @@ export default {
       itFlag: "src/assets/img/italy.png",
       ukFlag: "src/assets/img/uk.png",
       imgBaseUrl: "https://image.tmdb.org/t/p/w342",
+      votoDecimale: this.voto,
     };
+  },
+  methods: {
+    dimezzaVoto() {
+      const votoDimezzato = this.votoDecimale / 2;
+      return Math.ceil(votoDimezzato);
+    },
   },
 };
 </script>
@@ -34,7 +41,7 @@ export default {
       <h4 v-else>Lingua: {{ lingua }}</h4>
     </div>
     <div class="voto">
-      <h4>Voto: {{ voto }}</h4>
+      <h4>Voto: {{ dimezzaVoto() }}</h4>
     </div>
   </div>
 </template>
