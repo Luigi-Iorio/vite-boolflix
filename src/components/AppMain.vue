@@ -20,6 +20,7 @@ export default {
   <main>
     <!-- list card -->
     <ul>
+      <!-- movie list -->
       <li v-for="card in store.tmdbCard">
         <!-- card -->
         <MainCard
@@ -30,6 +31,20 @@ export default {
         />
         <!-- /card -->
       </li>
+      <!-- /movie list -->
+
+      <!-- tv list -->
+      <li v-for="cardTv in store.tmdbCardTv">
+        <!-- cardTv -->
+        <MainCard
+          :titolo="cardTv.name"
+          :titoloOriginale="cardTv.original_name"
+          :lingua="cardTv.original_language"
+          :voto="cardTv.vote_average"
+        />
+        <!-- /cardTv -->
+      </li>
+      <!-- /tv list -->
     </ul>
     <!-- /list card -->
   </main>

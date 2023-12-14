@@ -19,6 +19,17 @@ export default {
         .then((response) => {
           store.tmdbCard = response.data.results;
         });
+      axios
+        .get(store.tmdbApiTv, {
+          params: {
+            api_key: store.apiKey,
+            query: store.apiQuery,
+            language: store.language,
+          },
+        })
+        .then((response) => {
+          store.tmdbCardTv = response.data.results;
+        });
       store.apiQuery = "";
     },
   },
