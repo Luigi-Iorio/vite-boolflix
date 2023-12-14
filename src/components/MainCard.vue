@@ -1,6 +1,12 @@
 <script>
 export default {
   props: ["titolo", "titoloOriginale", "lingua", "voto"],
+  data() {
+    return {
+      itFlag: "src/assets/img/italy.png",
+      ukFlag: "src/assets/img/uk.png",
+    };
+  },
 };
 </script>
 
@@ -13,7 +19,15 @@ export default {
       <h4>Titolo Originale: {{ titoloOriginale }}</h4>
     </div>
     <div class="lingua">
-      <h4>Lingua Originale: {{ lingua }}</h4>
+      <div v-if="lingua === 'it'" class="flag">
+        <h4>Lingua:</h4>
+        <img :src="itFlag" alt="italia flag" />
+      </div>
+      <div v-else-if="lingua === 'en'" class="flag">
+        <h4>Lingua:</h4>
+        <img :src="ukFlag" alt="uk flag" />
+      </div>
+      <h4 v-else>Lingua: {{ lingua }}</h4>
     </div>
     <div class="voto">
       <h4>Voto: {{ voto }}</h4>
