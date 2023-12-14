@@ -2,6 +2,9 @@ import { createApp } from "vue";
 import "./assets/scss/general.scss";
 import App from "./App.vue";
 
+// Import Bootstrap's JS
+import * as bootstrap from "bootstrap";
+
 /* import the fontawesome core */
 import { library } from "@fortawesome/fontawesome-svg-core";
 
