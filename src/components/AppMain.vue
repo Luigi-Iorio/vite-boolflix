@@ -2,7 +2,6 @@
 import MainCard from "./MainCard.vue";
 
 import { store } from "../store.js";
-import axios from "axios";
 
 export default {
   data() {
@@ -21,9 +20,14 @@ export default {
   <main>
     <!-- list card -->
     <ul>
-      <li>
+      <li v-for="card in store.tmdbCard">
         <!-- card -->
-        <MainCard />
+        <MainCard
+          :titolo="card.title"
+          :titoloOriginale="card.original_title"
+          :lingua="card.original_language"
+          :voto="card.vote_average"
+        />
         <!-- /card -->
       </li>
     </ul>
