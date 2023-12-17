@@ -36,33 +36,38 @@ export default {
     <div class="info p-3">
       <!-- titolo -->
       <div class="titolo">
-        <h3>Titolo: {{ titolo }}</h3>
+        <h4 class="mb-0">Titolo:</h4>
+        <h5>{{ titolo }}</h5>
       </div>
       <!-- /titolo -->
 
       <!-- titolo originale-->
-      <div class="titolo-originale">
-        <h4>Titolo Originale: {{ titoloOriginale }}</h4>
+      <div v-show="titolo !== titoloOriginale" class="titolo-originale">
+        <h4 class="mb-0">Titolo Originale:</h4>
+        <h5>{{ titoloOriginale }}</h5>
       </div>
       <!-- /titolo originale-->
 
       <!-- lingua-->
       <div class="lingua">
         <div v-if="lingua === 'it'" class="flag">
-          <h4>Lingua:</h4>
-          <img :src="itFlag" alt="italia flag" />
+          <h4 class="mb-0">Lingua:</h4>
+          <img :src="itFlag" alt="italia flag" class="mb-2" />
         </div>
         <div v-else-if="lingua === 'en'" class="flag">
-          <h4>Lingua:</h4>
-          <img :src="ukFlag" alt="uk flag" />
+          <h4 class="mb-0">Lingua:</h4>
+          <img :src="ukFlag" alt="uk flag" class="mb-2" />
         </div>
-        <h4 v-else>Lingua: {{ lingua }}</h4>
+        <div v-else class="lingua-text">
+          <h4 class="mb-0">Lingua:</h4>
+          <h5>{{ lingua }}</h5>
+        </div>
       </div>
       <!-- /lingua-->
 
       <!-- voto -->
       <div class="voto">
-        <h4>Voto:</h4>
+        <h4 class="mb-0">Voto:</h4>
         <div class="stelle">
           <font-awesome-icon
             v-for="n in dimezzaVoto()"
@@ -105,9 +110,13 @@ export default {
     opacity: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.814);
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.8169468470982143) 40%,
+      rgba(0, 0, 0, 0) 100%
+    );
     position: absolute;
-    color: white;
+    color: rgb(222, 222, 222);
     z-index: 5;
     cursor: pointer;
     transition: 0.5s;
@@ -116,11 +125,19 @@ export default {
       opacity: 1;
     }
   }
+
+  &stelle {
+    color: rgb(222, 222, 222);
+  }
+
+  h4 {
+    color: rgb(129, 129, 129);
+  }
 }
 
 .flag {
   img {
-    width: 60px;
+    width: 30px;
     display: block;
   }
 }
