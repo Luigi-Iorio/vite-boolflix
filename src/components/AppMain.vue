@@ -17,10 +17,10 @@ export default {
 
 <template>
   <!-- main -->
-  <main>
-    <!-- list card -->
-    <ul>
-      <!-- movie list -->
+  <main class="p-3">
+    <h2 class="m-5">Film su BoolFlix</h2>
+    <!-- movie list -->
+    <ul class="d-flex flex-wrap justify-content-center gap-3">
       <li v-for="card in store.tmdbCard">
         <!-- card -->
         <MainCard
@@ -32,9 +32,12 @@ export default {
         />
         <!-- /card -->
       </li>
-      <!-- /movie list -->
+    </ul>
+    <!-- /movie list -->
 
-      <!-- tv list -->
+    <!-- tv list -->
+    <h2 class="m-5">Serie Tv su BoolFlix</h2>
+    <ul class="d-flex flex-wrap justify-content-center gap-3">
       <li v-for="cardTv in store.tmdbCardTv">
         <!-- cardTv -->
         <MainCard
@@ -46,11 +49,14 @@ export default {
         />
         <!-- /cardTv -->
       </li>
-      <!-- /tv list -->
     </ul>
-    <!-- /list card -->
+    <!-- /tv list -->
   </main>
   <!-- /main -->
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+main {
+  color: rgb(129, 129, 129);
+}
+</style>
