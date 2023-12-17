@@ -18,7 +18,7 @@ export default {
 <template>
   <!-- main -->
   <main class="p-3">
-    <h2 class="m-5">Film su BoolFlix</h2>
+    <h2 class="m-5">{{ store.titleMovie }}</h2>
     <!-- movie list -->
     <ul class="d-flex flex-wrap justify-content-center gap-3">
       <li v-for="card in store.tmdbCard">
@@ -36,7 +36,7 @@ export default {
     <!-- /movie list -->
 
     <!-- tv list -->
-    <h2 class="m-5">Serie Tv su BoolFlix</h2>
+    <h2 class="m-5">{{ store.titleTv }}</h2>
     <ul class="d-flex flex-wrap justify-content-center gap-3">
       <li v-for="cardTv in store.tmdbCardTv">
         <!-- cardTv -->
