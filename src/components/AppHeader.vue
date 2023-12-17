@@ -49,11 +49,6 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-// header
-header {
-  background-color: black;
-}
-
 // left
 .left {
   color: red;
