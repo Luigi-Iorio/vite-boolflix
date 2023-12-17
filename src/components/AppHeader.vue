@@ -31,7 +31,7 @@ export default {
           class="form-control"
           id="search"
           placeholder="Cerca film o serie tv"
-          v-model="store.apiQuery"
+          v-model="store.apiParams.apiQuery"
         />
         <label for="search">Cerca film o serie tv</label>
       </div>

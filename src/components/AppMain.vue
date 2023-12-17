@@ -18,10 +18,10 @@ export default {
 <template>
   <!-- main -->
   <main class="p-3">
-    <h2 class="m-5">{{ store.titleMovie }}</h2>
+    <h2 class="m-5">{{ store.movies.titleMovie }}</h2>
     <!-- movie list -->
     <ul class="d-flex flex-wrap justify-content-center gap-3">
-      <li v-for="card in store.tmdbCard">
+      <li v-for="card in store.movies.tmdbCard">
         <!-- card -->
         <MainCard
           :copertina="card.poster_path"
@@ -36,9 +36,9 @@ export default {
     <!-- /movie list -->
 
     <!-- tv list -->
-    <h2 class="m-5">{{ store.titleTv }}</h2>
+    <h2 class="m-5">{{ store.tvs.titleTv }}</h2>
     <ul class="d-flex flex-wrap justify-content-center gap-3">
-      <li v-for="cardTv in store.tmdbCardTv">
+      <li v-for="cardTv in store.tvs.tmdbCardTv">
         <!-- cardTv -->
         <MainCard
           :copertina="cardTv.poster_path"

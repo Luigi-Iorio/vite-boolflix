@@ -9,30 +9,30 @@ export default {
   methods: {
     ricerca() {
       // cambio titoli
-      store.titleMovie = `I tuoi film con: ${store.apiQuery}`;
-      store.titleTv = `Le tue serie tv con: ${store.apiQuery}`;
-      // chiamate api
+      store.movies.titleMovie = `I tuoi film con: ${store.apiParams.apiQuery}`;
+      store.tvs.titleTv = `Le tue serie tv con: ${store.apiParams.apiQuery}`;
+      // chiamate api per ricerca
       axios
-        .get(store.tmdbApi, {
+        .get(store.movies.tmdbApi, {
           params: {
-            api_key: store.apiKey,
-            query: store.apiQuery,
-            language: store.language,
+            api_key: store.apiParams.apiKey,
+            query: store.apiParams.apiQuery,
+            language: store.apiParams.language,
           },
         })
         .then((response) => {
-          store.tmdbCard = response.data.results;
+          store.movies.tmdbCard = response.data.results;
         });
       axios
-        .get(store.tmdbApiTv, {
+        .get(store.tvs.tmdbApiTv, {
           params: {
-            api_key: store.apiKey,
-            query: store.apiQuery,
-            language: store.language,
+            api_key: store.apiParams.apiKey,
+            query: store.apiParams.apiQuery,
+            language: store.apiParams.language,
           },
         })
         .then((response) => {
-          store.tmdbCardTv = response.data.results;
+          store.tvs.tmdbCardTv = response.data.results;
         });
       store.apiQuery = "";
     },
@@ -40,27 +40,27 @@ export default {
   created() {
     // chimata api per film e serie tv popolari in home
     axios
-      .get(store.popularApiMovie, {
+      .get(store.popularMovies.popularApiMovie, {
         params: {
-          api_key: store.apiKey,
-          region: store.region,
-          language: store.language,
+          api_key: store.apiParams.apiKey,
+          region: store.apiParams.region,
+          language: store.apiParams.language,
         },
       })
       .then((response) => {
-        store.tmdbCard = response.data.results;
+        store.movies.tmdbCard = response.data.results;
       });
 
     axios
-      .get(store.popularApiTv, {
+      .get(store.popularTvs.popularApiTv, {
         params: {
-          api_key: store.apiKey,
-          region: store.region,
-          language: store.language,
+          api_key: store.apiParams.apiKey,
+          region: store.apiParams.region,
+          language: store.apiParams.language,
         },
       })
       .then((response) => {
-        store.tmdbCardTv = response.data.results;
+        store.tvs.tmdbCardTv = response.data.results;
       });
   },
   components: {
