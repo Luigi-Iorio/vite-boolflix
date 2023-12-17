@@ -8,33 +8,35 @@ import { store } from "./store";
 export default {
   methods: {
     ricerca() {
-      // cambio titoli
-      store.movies.titleMovie = `I tuoi film con: ${store.apiParams.apiQuery}`;
-      store.tvs.titleTv = `Le tue serie tv con: ${store.apiParams.apiQuery}`;
-      // chiamate api per ricerca
-      axios
-        .get(store.movies.tmdbApi, {
-          params: {
-            api_key: store.apiParams.apiKey,
-            query: store.apiParams.apiQuery,
-            language: store.apiParams.language,
-          },
-        })
-        .then((response) => {
-          store.movies.tmdbCard = response.data.results;
-        });
-      axios
-        .get(store.tvs.tmdbApiTv, {
-          params: {
-            api_key: store.apiParams.apiKey,
-            query: store.apiParams.apiQuery,
-            language: store.apiParams.language,
-          },
-        })
-        .then((response) => {
-          store.tvs.tmdbCardTv = response.data.results;
-        });
-      store.apiQuery = "";
+      if (store.apiParams.apiQuery.trim() !== "") {
+        // cambio titoli
+        store.movies.titleMovie = `I tuoi film con: ${store.apiParams.apiQuery}`;
+        store.tvs.titleTv = `Le tue serie tv con: ${store.apiParams.apiQuery}`;
+        // chiamate api per ricerca
+        axios
+          .get(store.movies.tmdbApi, {
+            params: {
+              api_key: store.apiParams.apiKey,
+              query: store.apiParams.apiQuery,
+              language: store.apiParams.language,
+            },
+          })
+          .then((response) => {
+            store.movies.tmdbCard = response.data.results;
+          });
+        axios
+          .get(store.tvs.tmdbApiTv, {
+            params: {
+              api_key: store.apiParams.apiKey,
+              query: store.apiParams.apiQuery,
+              language: store.apiParams.language,
+            },
+          })
+          .then((response) => {
+            store.tvs.tmdbCardTv = response.data.results;
+          });
+      }
+      store.apiParams.apiQuery = "";
     },
   },
   created() {
