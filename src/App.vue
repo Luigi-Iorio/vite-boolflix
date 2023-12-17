@@ -45,4 +45,8 @@ export default {
   <AppMain />
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+#app {
+  background-color: rgb(20, 20, 20);
+}
+</style>
