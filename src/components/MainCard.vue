@@ -35,7 +35,12 @@ export default {
   <div class="card-tmdb border-0 rounded-3">
     <!-- copertina -->
     <div class="copertina">
-      <img :src="imgBaseUrl + copertina" alt="" />
+      <img
+        v-if="imgBaseUrl + copertina !== 'https://image.tmdb.org/t/p/w342null'"
+        :src="imgBaseUrl + copertina"
+        :alt="titolo"
+      />
+      <font-awesome-icon class="img-copertina" v-else icon="fa-solid fa-film" />
     </div>
     <!-- /copertina -->
 
@@ -118,6 +123,12 @@ export default {
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    .img-copertina {
+      width: 100%;
+      height: 100%;
+      background-color: rgb(31, 31, 31);
     }
   }
 
