@@ -27,6 +27,24 @@ export default {
           });
       }
     },
+    // chimata api per film e serie popolari da visualizzare in home quando non viene effettuata la ricerca
+    chiamataApiDefault(urlApi, type) {
+      axios
+        .get(urlApi, {
+          params: {
+            api_key: store.apiParams.apiKey,
+            region: store.apiParams.region,
+            language: store.apiParams.language,
+          },
+        })
+        .then((response) => {
+          if (type === "movie") {
+            store.movies.tmdbCard = response.data.results;
+          } else if (type === "tv") {
+            store.tvs.tmdbCardTv = response.data.results;
+          }
+        });
+    },
     // funzione eseguita al click sul button
     ricerca() {
       if (store.apiParams.apiQuery.trim() !== "") {
@@ -43,29 +61,11 @@ export default {
   },
   created() {
     // chiamate api per film e serie tv popolari in home
-    axios
-      .get(store.popularMovies.popularApiMovie, {
-        params: {
-          api_key: store.apiParams.apiKey,
-          region: store.apiParams.region,
-          language: store.apiParams.language,
-        },
-      })
-      .then((response) => {
-        store.movies.tmdbCard = response.data.results;
-      });
-
-    axios
-      .get(store.popularTvs.popularApiTv, {
-        params: {
-          api_key: store.apiParams.apiKey,
-          region: store.apiParams.region,
-          language: store.apiParams.language,
-        },
-      })
-      .then((response) => {
-        store.tvs.tmdbCardTv = response.data.results;
-      });
+    this.chiamataApiDefault(
+      store.popularMovies.popularApiMovie,
+      store.movies.type
+    );
+    this.chiamataApiDefault(store.popularTvs.popularApiTv, store.tvs.type);
   },
   components: {
     AppHeader,
