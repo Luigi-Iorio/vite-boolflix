@@ -7,40 +7,37 @@ import { store } from "./store";
 
 export default {
   methods: {
+    // chimate api per ricerca
+    chiamataApi(urlApi, arrCard) {
+      if (store.apiParams.apiQuery.trim() !== "") {
+        axios
+          .get(urlApi, {
+            params: {
+              api_key: store.apiParams.apiKey,
+              query: store.apiParams.apiQuery,
+              language: store.apiParams.language,
+            },
+          })
+          .then((response) => {
+            arrCard = response.data.results;
+          });
+      }
+    },
     ricerca() {
       if (store.apiParams.apiQuery.trim() !== "") {
         // cambio titoli
         store.movies.titleMovie = `I tuoi film con: ${store.apiParams.apiQuery}`;
         store.tvs.titleTv = `Le tue serie tv con: ${store.apiParams.apiQuery}`;
         // chiamate api per ricerca
-        axios
-          .get(store.movies.tmdbApi, {
-            params: {
-              api_key: store.apiParams.apiKey,
-              query: store.apiParams.apiQuery,
-              language: store.apiParams.language,
-            },
-          })
-          .then((response) => {
-            store.movies.tmdbCard = response.data.results;
-          });
-        axios
-          .get(store.tvs.tmdbApiTv, {
-            params: {
-              api_key: store.apiParams.apiKey,
-              query: store.apiParams.apiQuery,
-              language: store.apiParams.language,
-            },
-          })
-          .then((response) => {
-            store.tvs.tmdbCardTv = response.data.results;
-          });
+        this.chiamataApi(store.movies.tmdbApi, store.movies.tmdbCard);
+        this.chiamataApi(store.tvs.tmdbApiTv, store.tvs.tmdbCardTv);
       }
+      // svuota campo input
       store.apiParams.apiQuery = "";
     },
   },
   created() {
-    // chimata api per film e serie tv popolari in home
+    // chiamate api per film e serie tv popolari in home
     axios
       .get(store.popularMovies.popularApiMovie, {
         params: {
