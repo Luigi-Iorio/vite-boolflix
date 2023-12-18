@@ -7,8 +7,8 @@ import { store } from "./store";
 
 export default {
   methods: {
-    // chimate api per ricerca
-    chiamataApi(urlApi, arrCard) {
+    // chimate api per ricerca film
+    chiamataApiFilm(urlApi) {
       if (store.apiParams.apiQuery.trim() !== "") {
         axios
           .get(urlApi, {
@@ -19,18 +19,35 @@ export default {
             },
           })
           .then((response) => {
-            arrCard = response.data.results;
+            store.movies.tmdbCard = response.data.results;
           });
       }
     },
+    // chimate api per ricerca serie tv
+    chiamataApiTv(urlApi) {
+      if (store.apiParams.apiQuery.trim() !== "") {
+        axios
+          .get(urlApi, {
+            params: {
+              api_key: store.apiParams.apiKey,
+              query: store.apiParams.apiQuery,
+              language: store.apiParams.language,
+            },
+          })
+          .then((response) => {
+            store.tvs.tmdbCardTv = response.data.results;
+          });
+      }
+    },
+    // funzione eseguita al click sul button
     ricerca() {
       if (store.apiParams.apiQuery.trim() !== "") {
         // cambio titoli
         store.movies.titleMovie = `I tuoi film con: ${store.apiParams.apiQuery}`;
         store.tvs.titleTv = `Le tue serie tv con: ${store.apiParams.apiQuery}`;
         // chiamate api per ricerca
-        this.chiamataApi(store.movies.tmdbApi, store.movies.tmdbCard);
-        this.chiamataApi(store.tvs.tmdbApiTv, store.tvs.tmdbCardTv);
+        this.chiamataApiFilm(store.movies.tmdbApi);
+        this.chiamataApiTv(store.tvs.tmdbApiTv);
       }
       // svuota campo input
       store.apiParams.apiQuery = "";
