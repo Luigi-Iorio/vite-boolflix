@@ -5,14 +5,14 @@ export const store = reactive({
     tmdbCard: [],
     type: "movie",
     tmdbApi: "https://api.themoviedb.org/3/search/movie",
-    titleMovie: "Film più popolari su BoolFlix",
+    titleMovie: "Film di successo su BoolFlix",
   },
 
   tvs: {
     tmdbCardTv: [],
     type: "tv",
     tmdbApiTv: "https://api.themoviedb.org/3/search/tv",
-    titleTv: "Serie tv più popolari su BoolFlix",
+    titleTv: "Serie tv di successo su BoolFlix",
   },
 
   popularMovies: {
