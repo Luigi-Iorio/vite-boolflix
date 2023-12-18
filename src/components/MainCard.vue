@@ -1,6 +1,13 @@
 <script>
 export default {
-  props: ["copertina", "titolo", "titoloOriginale", "lingua", "voto"],
+  props: [
+    "copertina",
+    "titolo",
+    "titoloOriginale",
+    "lingua",
+    "voto",
+    "overview",
+  ],
   data() {
     return {
       itFlag: "src/assets/img/italy.png",
@@ -66,7 +73,7 @@ export default {
       <!-- /lingua-->
 
       <!-- voto -->
-      <div class="voto">
+      <div class="voto mb-2">
         <h4 class="mb-0">Voto:</h4>
         <div class="stelle">
           <font-awesome-icon
@@ -80,6 +87,14 @@ export default {
         </div>
       </div>
       <!-- /voto -->
+
+      <!-- descrizione -->
+      <div class="descrizione">
+        <h4 class="mb-0">Descrizione</h4>
+        <p class="mb-0" v-if="overview !== ''">{{ overview }}</p>
+        <p class="mb-0" v-else>Descrizione in arrivo</p>
+      </div>
+      <!-- /descrizione -->
     </div>
     <!-- /info -->
   </div>
@@ -110,11 +125,7 @@ export default {
     opacity: 0;
     height: 100%;
     width: 100%;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.8169468470982143) 40%,
-      rgba(0, 0, 0, 0) 100%
-    );
+    background-color: rgba(0, 0, 0, 0.8169468470982143);
     position: absolute;
     color: rgb(222, 222, 222);
     z-index: 5;
@@ -126,12 +137,18 @@ export default {
     }
   }
 
-  &stelle {
-    color: rgb(222, 222, 222);
-  }
-
   h4 {
     color: rgb(129, 129, 129);
+  }
+
+  .descrizione {
+    p {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 6;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 }
 

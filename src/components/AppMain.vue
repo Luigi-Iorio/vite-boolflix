@@ -29,6 +29,7 @@ export default {
           :titoloOriginale="card.original_title"
           :lingua="card.original_language"
           :voto="card.vote_average"
+          :overview="card.overview"
         />
         <!-- /card -->
       </li>
@@ -46,6 +47,7 @@ export default {
           :titoloOriginale="cardTv.original_name"
           :lingua="cardTv.original_language"
           :voto="cardTv.vote_average"
+          :overview="cardTv.overview"
         />
         <!-- /cardTv -->
       </li>
