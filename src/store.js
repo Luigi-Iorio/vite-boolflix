@@ -24,7 +24,7 @@ export const store = reactive({
   apiParams: {
     region: "Ital",
     apiKey: "3302787678ca722a258e9aee580789a5",
-    language: "it_IT",
+    language: "it-IT",
     apiQuery: "",
   },
 });
