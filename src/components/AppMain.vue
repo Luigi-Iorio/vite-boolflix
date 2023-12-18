@@ -20,7 +20,7 @@ export default {
   <main class="p-3">
     <h2 class="m-5">{{ store.movies.titleMovie }}</h2>
     <!-- movie list -->
-    <ul class="d-flex flex-wrap justify-content-center gap-3">
+    <ul class="d-flex flex-wrap justify-content-center gap-3 p-0">
       <li v-for="card in store.movies.tmdbCard">
         <!-- card -->
         <MainCard
@@ -38,7 +38,7 @@ export default {
 
     <!-- tv list -->
     <h2 class="m-5">{{ store.tvs.titleTv }}</h2>
-    <ul class="d-flex flex-wrap justify-content-center gap-3">
+    <ul class="d-flex flex-wrap justify-content-center gap-3 p-0">
       <li v-for="cardTv in store.tvs.tmdbCardTv">
         <!-- cardTv -->
         <MainCard
