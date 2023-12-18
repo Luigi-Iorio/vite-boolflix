@@ -32,7 +32,9 @@ Aggiungere un messaggio di errore nel caso in cui la ricerca non restituisca ris
 
 Per ogni film o serie TV, richiedere all'API l'elenco dei primi 5 attori del cast, mostrando solo Nome e Cognome.
 
-**Lista di Generi e Filtri**: Creato un elenco dei generi disponibili tramite l'API. Aggiungere filtri per mostrare/nascondere le schede ottenute con la ricerca.
+### Lista di Generi e Filtri
+
+Creato un elenco dei generi disponibili tramite l'API. Aggiungere filtri per mostrare/nascondere le schede ottenute con la ricerca.
 
 ## Layout
 
