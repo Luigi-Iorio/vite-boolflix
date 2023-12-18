@@ -17,10 +17,12 @@ export default {
     };
   },
   methods: {
+    // conversione voto da max 10 a max 5
     dimezzaVoto() {
       const votoDimezzato = this.votoDecimale / 2;
       return Math.ceil(votoDimezzato);
     },
+    // aggiunta dinamica stelle vuote fino a raggiungere n. 5 stelle totali
     stelleVuote() {
       if (this.dimezzaVoto() < 5) {
         const mancanti = 5 - this.dimezzaVoto();
@@ -40,7 +42,7 @@ export default {
         :src="imgBaseUrl + copertina"
         :alt="titolo"
       />
-      <font-awesome-icon class="img-copertina" v-else icon="fa-solid fa-film" />
+      <font-awesome-icon v-else class="img-copertina" icon="fa-solid fa-film" />
     </div>
     <!-- /copertina -->
 
@@ -62,17 +64,23 @@ export default {
 
       <!-- lingua-->
       <div class="lingua">
-        <div v-if="lingua === 'it'" class="flag">
+        <div class="flag">
           <h4 class="mb-0">Lingua:</h4>
-          <img :src="itFlag" alt="italia flag" class="mb-2" />
-        </div>
-        <div v-else-if="lingua === 'en'" class="flag">
-          <h4 class="mb-0">Lingua:</h4>
-          <img :src="ukFlag" alt="uk flag" class="mb-2" />
-        </div>
-        <div v-else class="lingua-text">
-          <h4 class="mb-0">Lingua:</h4>
-          <h5>{{ lingua }}</h5>
+          <img
+            v-if="lingua === 'it'"
+            class="mb-2"
+            :src="itFlag"
+            alt="italia flag"
+          />
+
+          <img
+            v-else-if="lingua === 'en'"
+            class="mb-2"
+            :src="ukFlag"
+            alt="uk flag"
+          />
+
+          <h5 v-else>{{ lingua }}</h5>
         </div>
       </div>
       <!-- /lingua-->
