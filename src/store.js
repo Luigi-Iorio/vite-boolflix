@@ -3,12 +3,14 @@ import { reactive } from "vue";
 export const store = reactive({
   movies: {
     tmdbCard: [],
+    type: "movie",
     tmdbApi: "https://api.themoviedb.org/3/search/movie",
     titleMovie: "Film più popolari su BoolFlix",
   },
 
   tvs: {
     tmdbCardTv: [],
+    type: "tv",
     tmdbApiTv: "https://api.themoviedb.org/3/search/tv",
     titleTv: "Serie tv più popolari su BoolFlix",
   },
